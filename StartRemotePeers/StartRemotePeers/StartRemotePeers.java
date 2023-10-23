@@ -26,7 +26,7 @@ public class StartRemotePeers {
 		int i1;
 		peerInfoVector = new Vector<RemotePeerInfo>();
 		try {
-			BufferedReader in = new BufferedReader(new FileReader("PeerInfo.cfg"));
+			BufferedReader in = new BufferedReader(new FileReader("CNT4007_Project_Fall_2023/StartRemotePeers/StartRemotePeers/PeerInfo.cfg"));
 			while((st = in.readLine()) != null) {
 				String[] tokens = st.split("\\s+");
 				//System.out.println("tokens begin ----");
@@ -47,7 +47,6 @@ public class StartRemotePeers {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		try {
 			StartRemotePeers myStart = new StartRemotePeers();
 			myStart.getConfiguration();

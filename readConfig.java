@@ -35,10 +35,10 @@ public class readConfig {
         //System.out.println(NumberOfPreferredNeighbors + " " + UnchokingInterval + " " + OptimisticUnchokingInterval + " "+ FileName +""+ FileSize + " "+ PieceSize + " "); //
     }
 
-    // public static void main(String[] args){
-    //     readConfig test = new readConfig("CNT4007_Project_Fall_2023/project_config_file_small/project_config_file_small/Common.cfg");
-    //     System.out.println(test.NumberOfPreferredNeighbors + " " + test.UnchokingInterval + " " + test.OptimisticUnchokingInterval + " "+ test.FileName +" "+ test.FileSize + " "+ test.PieceSize + " "); //
-    //     //System.out.println(test.config);
+    public static void main(String[] args){
+        readConfig test = new readConfig("CNT4007_Project_Fall_2023/project_config_file_small/project_config_file_small/Common.cfg");
+        System.out.println(test.NumberOfPreferredNeighbors + " " + test.UnchokingInterval + " " + test.OptimisticUnchokingInterval + " "+ test.FileName +" "+ test.FileSize + " "+ test.PieceSize + " "); //
+        //System.out.println(test.config);
     
-    // }
+    }
 }
