@@ -86,9 +86,9 @@ class reader{
     {
         return Integer.valueOf(OptimisticUnchokingInterval);
     }
-    public int getOptimisticUnchokingInterval()
+    public int getFilesize()
     {
-        return Integer.valueOf(OptimisticUnchokingInterval);
+        return Integer.valueOf(FileSize);
     }
 
     public reader(String path){
