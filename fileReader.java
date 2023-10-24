@@ -50,7 +50,34 @@ class fileReader
             {
                 byte[] temp = {};
                 fins.read(temp, i * pieceSize, pieceSize);
+                readIndex += pieceSize;
+                pieceVector.add(temp);
             }
+            byte[]temp = {};
+            fins.read(temp, readIndex, (int)currentTask.length()-readIndex);
+            pieceVector.add(temp);
         }
+    }
+    public byte[] getPieceOnDemand(int index) throws IOException
+    {
+        File currentTask = new File(fileDir);
+        int readIndex = 0;
+        byte[] temp = {};
+        FileInputStream fins = new FileInputStream(currentTask);
+        fins.read(temp, index * pieceSize, pieceSize);
+        return temp;
+    }
+    public Vector<byte[]> getPieces()
+    {
+        return pieceVector;
+    }
+    public boolean checkLength()
+    {
+        int vectorOverallLength = 0;
+        for(int i = 0; i < pieceVector.size(); i++)
+        {
+            vectorOverallLength += pieceVector.get(i).length;
+        }
+        return fileSizeInByte == vectorOverallLength;
     }
 }
