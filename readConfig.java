@@ -3,13 +3,26 @@ import java.io.*;
 import java.util.Scanner;
 
 public class readConfig {
-    String config = "";
-    int NumberOfPreferredNeighbors;
-    int UnchokingInterval;
-    int OptimisticUnchokingInterval;
-    String FileName;
-    int FileSize;
-    int PieceSize;
+    private String config = "";
+    private int NumberOfPreferredNeighbors;
+    private int UnchokingInterval;
+    private int OptimisticUnchokingInterval;
+    private String FileName;
+    private int FileSize;
+    private int PieceSize;
+
+    public int getNumberOfPreferredNeighbors(){
+        return NumberOfPreferredNeighbors;
+    }
+
+    public int getUnchokingInterval(){
+        return UnchokingInterval;
+    }
+
+    public int getUnchokingInterval(){
+        return UnchokingInterval;
+    }
+
     public readConfig(String path){
         try {
             Scanner scan = new Scanner(new File(path));
@@ -39,6 +52,5 @@ public class readConfig {
         readConfig test = new readConfig("CNT4007_Project_Fall_2023/project_config_file_small/project_config_file_small/Common.cfg");
         System.out.println(test.NumberOfPreferredNeighbors + " " + test.UnchokingInterval + " " + test.OptimisticUnchokingInterval + " "+ test.FileName +" "+ test.FileSize + " "+ test.PieceSize + " "); //
         //System.out.println(test.config);
-    
     }
 }
