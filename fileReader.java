@@ -62,12 +62,12 @@ class fileReader
     }
     public byte[] getPieceOnDemand(int index) throws IOException
     {
-        File currentTask = new File(fileDir);
-        int readIndex = 0;
-        byte[] temp = {};
-        FileInputStream fins = new FileInputStream(currentTask);
-        fins.read(temp, index * pieceSize, pieceSize);
-        return temp;
+            File currentTask = new File(fileDir);
+            int readIndex = 0;
+            byte[] temp = {};
+            FileInputStream fins = new FileInputStream(currentTask);
+            fins.read(temp, index * pieceSize, pieceSize);
+            return temp;
     }
     public Vector<byte[]> getPieces()
     {

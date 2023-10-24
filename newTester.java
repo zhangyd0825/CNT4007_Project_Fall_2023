@@ -1,8 +1,9 @@
-package CNT4007_Project_Fall_2023;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
-import java.io.*;
 
-public class reader {
+class reader
+{
     //private String config = "";
     private int NumberOfPreferredNeighbors;
     private int UnchokingInterval;
@@ -11,31 +12,38 @@ public class reader {
     private int FileSize;
     private int PieceSize;
 
-    public int getNumberOfPreferredNeighbors(){
+    public int getNumberOfPreferredNeighbors()
+    {
         return NumberOfPreferredNeighbors;
     }
 
-    public int getUnchokingInterval(){
+    public int getUnchokingInterval()
+    {
         return UnchokingInterval;
     }
 
-    public int getOptimisticUnchokingInterval(){
+    public int getOptimisticUnchokingInterval()
+    {
         return OptimisticUnchokingInterval;
     }
 
-    public String getFileName(){
+    public String getFileName()
+    {
         return FileName;
     }
 
-    public int getFileSize(){
+    public int getFileSize()
+    {
         return FileSize;
     }
 
-    public int getPieceSize(){
+    public int getPieceSize()
+    {
         return PieceSize;
     }
 
-    public reader(String path){
+    public reader(String path)
+    {
         try {
             Scanner scan = new Scanner(new File(path));
             scan.useDelimiter(" |\n");
@@ -60,15 +68,8 @@ public class reader {
         }
         //System.out.println(NumberOfPreferredNeighbors + " " + UnchokingInterval + " " + OptimisticUnchokingInterval + " "+ FileName +""+ FileSize + " "+ PieceSize + " "); //
     }
+}
+public class newTester
+{
 
-    // public static void main(String[] args){
-    //     readConfig test = new readConfig("CNT4007_Project_Fall_2023/project_config_file_small/project_config_file_small/Common.cfg");
-    //     System.out.println("NumberOfPreferedNeighbors: " + test.getNumberOfPreferredNeighbors());
-    //     System.out.println("UnchokingInterval: " + test.getUnchokingInterval());
-    //     System.out.println("OptimisticUnchokingInterval: " + test.getOptimisticUnchokingInterval());
-    //     System.out.println("FileName: " + test.getFileName());
-    //     System.out.println("FileSize: " + test.getFileSize());
-    //     System.out.println("PieceSize: " + test.getPieceSize());
-    
-    // }
 }

@@ -17,11 +17,13 @@ public class peerProcess {
     private static int hostID;
     private static reader commonConfig= new reader("project_config_file_small/project_config_file_small/Common.cfg");
 
+
     public static void main(String[] args) {
         //hostID = Integer.parseInt(args[0]);
         try{
             //commonConfig = new readConfig("CNT4007_Project_Fall_2023/project_config_file_small/project_config_file_small/Common.cfg");
-            System.out.println("file name: "+ commonConfig.getFileName());
+            //System.out.println("file name: "+ commonConfig.getFileName());
+            commonConfig.display();
             System.out.println("this works");
         }
         catch (Exception e) {
@@ -32,22 +34,31 @@ public class peerProcess {
 }
 class reader{
     //private String config = "";
-    private int NumberOfPreferredNeighbors;
-    private int UnchokingInterval;
-    private int OptimisticUnchokingInterval;
+    private String NumberOfPreferredNeighbors;
+    private String UnchokingInterval;
+    private String OptimisticUnchokingInterval;
     private String FileName;
-    private int FileSize;
-    private int PieceSize;
+    private String FileSize;
+    private String PieceSize;
 
-    public int getNumberOfPreferredNeighbors(){
+    public void display()
+    {
+        System.out.println("Number of Preferred Neighbors: " + NumberOfPreferredNeighbors + "\n");
+        System.out.println("Unchoking Interval: " + UnchokingInterval + "\n");
+        System.out.println("Optimistic Unchoking Interval: " + OptimisticUnchokingInterval + "\n");
+        System.out.println("File Name: " + FileName + "\n");
+        System.out.println("File Size: " + FileSize + "\n");
+        System.out.println("Piece Size: " + PieceSize + "\n");
+    }
+    public String getNumberOfPreferredNeighborsRaw(){
         return NumberOfPreferredNeighbors;
     }
 
-    public int getUnchokingInterval(){
+    public String getUnchokingIntervalRaw(){
         return UnchokingInterval;
     }
 
-    public int getOptimisticUnchokingInterval(){
+    public String getOptimisticUnchokingIntervalRaw(){
         return OptimisticUnchokingInterval;
     }
 
@@ -55,12 +66,29 @@ class reader{
         return FileName;
     }
 
-    public int getFileSize(){
+    public String getFileSizeRaw(){
         return FileSize;
     }
 
-    public int getPieceSize(){
+    public String getPieceSizeRaw(){
         return PieceSize;
+    }
+
+    public int getgetNumberOfPreferredNeighbors()
+    {
+        return Integer.valueOf(NumberOfPreferredNeighbors);
+    }
+    public int getUnchokingInterval()
+    {
+        return Integer.valueOf(UnchokingInterval);
+    }
+    public int getOptimisticUnchokingInterval()
+    {
+        return Integer.valueOf(OptimisticUnchokingInterval);
+    }
+    public int getOptimisticUnchokingInterval()
+    {
+        return Integer.valueOf(OptimisticUnchokingInterval);
     }
 
     public reader(String path){
@@ -70,17 +98,17 @@ class reader{
             while(scan.hasNext()){
                 //config += scan.next() + "\n";
                 scan.next();
-                NumberOfPreferredNeighbors = Integer.parseInt(scan.next());
+                NumberOfPreferredNeighbors = scan.next();
                 scan.next();
-                UnchokingInterval = scan.nextInt();
+                UnchokingInterval = scan.next();
                 scan.next();
-                OptimisticUnchokingInterval = scan.nextInt();
+                OptimisticUnchokingInterval = scan.next();
                 scan.next();
                 FileName = scan.next();
                 scan.next();
-                FileSize = scan.nextInt();
+                FileSize = scan.next();
                 scan.next();
-                PieceSize = scan.nextInt();
+                PieceSize = scan.next();
             }
         }
         catch (FileNotFoundException e) {
