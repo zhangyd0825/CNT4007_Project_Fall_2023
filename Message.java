@@ -1,3 +1,5 @@
+package CNT4007_Project_Fall_2023;
+
 import java.util.Base64;
 
 public class Message

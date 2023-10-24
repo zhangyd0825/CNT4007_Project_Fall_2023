@@ -18,9 +18,10 @@ public class peerProcess {
     private static readConfig commonConfig;
 
     public static void main(String[] args) {
-        hostID = Integer.parseInt(args[0]);
+        //hostID = Integer.parseInt(args[0]);
         try{
-            commonConfig = new readConfig("CNT4007_Project_Fall_2023/project_config_file_small/project_config_file_small/Common.cfg");
+            commonConfig = new CNT4007_Project_Fall_2023.readConfig("CNT4007_Project_Fall_2023/project_config_file_small/project_config_file_small/Common.cfg");
+            System.out.println("this works");
         }
         catch (Exception e) {
             System.out.println("An error occurred");
