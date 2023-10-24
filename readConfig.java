@@ -62,14 +62,14 @@ public class readConfig{
         //System.out.println(NumberOfPreferredNeighbors + " " + UnchokingInterval + " " + OptimisticUnchokingInterval + " "+ FileName +""+ FileSize + " "+ PieceSize + " "); //
     }
 
-    // public static void main(String[] args){
-    //     readConfig test = new readConfig("CNT4007_Project_Fall_2023/project_config_file_small/project_config_file_small/Common.cfg");
-    //     System.out.println("NumberOfPreferedNeighbors: " + test.getNumberOfPreferredNeighbors());
-    //     System.out.println("UnchokingInterval: " + test.getUnchokingInterval());
-    //     System.out.println("OptimisticUnchokingInterval: " + test.getOptimisticUnchokingInterval());
-    //     System.out.println("FileName: " + test.getFileName());
-    //     System.out.println("FileSize: " + test.getFileSize());
-    //     System.out.println("PieceSize: " + test.getPieceSize());
-    
-    // }
+    public static void main(String[] args){
+        readConfig test = new readConfig("CNT4007_Project_Fall_2023/project_config_file_small/project_config_file_small/Common.cfg");
+        System.out.println("NumberOfPreferedNeighbors: " + test.getNumberOfPreferredNeighbors());
+        System.out.println("UnchokingInterval: " + test.getUnchokingInterval());
+        System.out.println("OptimisticUnchokingInterval: " + test.getOptimisticUnchokingInterval());
+        System.out.println("FileName: " + test.getFileName());
+        System.out.println("FileSize: " + test.getFileSize());
+        System.out.println("PieceSize: " + test.getPieceSize());
+
+    }
 }
