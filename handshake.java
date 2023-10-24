@@ -47,10 +47,9 @@ public class handshake {
         handshake s = new handshake(1001);
         String p = new String(s.message, StandardCharsets.UTF_8);
         System.out.println(p);
-        String bytes = "";
+        System.out.print("Handshake message in bytes: ");
         for (byte b : s.message){
             System.out.print(b + " ");
         }
-        System.out.println(bytes);
     }
 }
