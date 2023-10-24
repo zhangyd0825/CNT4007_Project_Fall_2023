@@ -1,9 +1,8 @@
 package CNT4007_Project_Fall_2023;
-import CNT4007_Project_Fall_2023.readConfig;
-import java.io.*;
 import java.util.Scanner;
+import java.io.*;
 
-public class readConfig{
+public class reader {
     //private String config = "";
     private int NumberOfPreferredNeighbors;
     private int UnchokingInterval;
@@ -36,7 +35,7 @@ public class readConfig{
         return PieceSize;
     }
 
-    public readConfig(String path){
+    public reader(String path){
         try {
             Scanner scan = new Scanner(new File(path));
             scan.useDelimiter(" |\n");

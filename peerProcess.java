@@ -15,12 +15,13 @@ public class peerProcess {
     private static final char REQUEST = '6';
     private static final char PIECE = '7';
     private static int hostID;
-    private static readConfig commonConfig;
+    private static readConfig commonConfig= new readConfig("CNT4007_Project_Fall_2023/project_config_file_small/project_config_file_small/Common.cfg");
 
     public static void main(String[] args) {
-        //hostID = Integer.parseInt(args[0]);
+        hostID = Integer.parseInt(args[0]);
         try{
-            commonConfig = new CNT4007_Project_Fall_2023.readConfig("CNT4007_Project_Fall_2023/project_config_file_small/project_config_file_small/Common.cfg");
+            //commonConfig = new readConfig("CNT4007_Project_Fall_2023/project_config_file_small/project_config_file_small/Common.cfg");
+            System.out.println("file name: "+ commonConfig.getFileName());
             System.out.println("this works");
         }
         catch (Exception e) {
