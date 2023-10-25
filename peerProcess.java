@@ -4,6 +4,7 @@ import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 import java.io.*;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class peerProcess {
     private static final char CHOKE = '0';
@@ -15,7 +16,7 @@ public class peerProcess {
     private static final char REQUEST = '6';
     private static final char PIECE = '7';
     private static int hostID;
-    private static reader commonConfig= new reader("project_config_file_small/project_config_file_small/Common.cfg");
+    private static reader commonConfig= new reader("CNT4007_Project_Fall_2023/project_config_file_small/project_config_file_small/Common.cfg");
 
 
     public static void main(String[] args) {
@@ -25,6 +26,12 @@ public class peerProcess {
             //System.out.println("file name: "+ commonConfig.getFileName());
             commonConfig.display();
             System.out.println("this works");
+            RunServer serverThread = new RunServer();
+            serverThread.start();
+            TimeUnit.SECONDS.sleep(2);
+            Client client = new Client();
+            client.run();
+
         }
         catch (Exception e) {
             System.out.println("An error occurred");
@@ -32,7 +39,7 @@ public class peerProcess {
         }
     }
 }
-class reader{
+class reader {
     //private String config = "";
     private String NumberOfPreferredNeighbors;
     private String UnchokingInterval;
@@ -41,8 +48,7 @@ class reader{
     private String FileSize;
     private String PieceSize;
 
-    public void display()
-    {
+    public void display() {
         System.out.println("Number of Preferred Neighbors: " + NumberOfPreferredNeighbors + "\n");
         System.out.println("Unchoking Interval: " + UnchokingInterval + "\n");
         System.out.println("Optimistic Unchoking Interval: " + OptimisticUnchokingInterval + "\n");
@@ -50,52 +56,52 @@ class reader{
         System.out.println("File Size: " + FileSize + "\n");
         System.out.println("Piece Size: " + PieceSize + "\n");
     }
-    public String getNumberOfPreferredNeighborsRaw(){
+
+    public String getNumberOfPreferredNeighborsRaw() {
         return NumberOfPreferredNeighbors;
     }
 
-    public String getUnchokingIntervalRaw(){
+    public String getUnchokingIntervalRaw() {
         return UnchokingInterval;
     }
 
-    public String getOptimisticUnchokingIntervalRaw(){
+    public String getOptimisticUnchokingIntervalRaw() {
         return OptimisticUnchokingInterval;
     }
 
-    public String getFileName(){
+    public String getFileName() {
         return FileName;
     }
 
-    public String getFileSizeRaw(){
+    public String getFileSizeRaw() {
         return FileSize;
     }
 
-    public String getPieceSizeRaw(){
+    public String getPieceSizeRaw() {
         return PieceSize;
     }
 
-    public int getgetNumberOfPreferredNeighbors()
-    {
+    public int getgetNumberOfPreferredNeighbors() {
         return Integer.valueOf(NumberOfPreferredNeighbors);
     }
-    public int getUnchokingInterval()
-    {
+
+    public int getUnchokingInterval() {
         return Integer.valueOf(UnchokingInterval);
     }
-    public int getOptimisticUnchokingInterval()
-    {
+
+    public int getOptimisticUnchokingInterval() {
         return Integer.valueOf(OptimisticUnchokingInterval);
     }
-    public int getFilesize()
-    {
+
+    public int getFilesize() {
         return Integer.valueOf(FileSize);
     }
 
-    public reader(String path){
+    public reader(String path) {
         try {
             Scanner scan = new Scanner(new File(path));
             scan.useDelimiter(" |\n");
-            while(scan.hasNext()){
+            while (scan.hasNext()) {
                 //config += scan.next() + "\n";
                 scan.next();
                 NumberOfPreferredNeighbors = scan.next();
@@ -110,10 +116,69 @@ class reader{
                 scan.next();
                 PieceSize = scan.next();
             }
-        }
-        catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             System.out.println("File not found");
         }
         //System.out.println(NumberOfPreferredNeighbors + " " + UnchokingInterval + " " + OptimisticUnchokingInterval + " "+ FileName +""+ FileSize + " "+ PieceSize + " "); //
+    }
+
+
+}
+class Peer extends Thread {
+    private int ID;
+    private String host;
+    private int port;
+    private boolean haveCompleteFile;
+    private char[] bitfield;
+    private int pieceNum;
+
+    public int getID() {
+        return ID;
+    }
+
+    public String getHost() {
+        return host;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public boolean getHaveCompleteFile() {
+        return haveCompleteFile;
+    }
+
+    public char[] getBitfield() {
+        return bitfield;
+    }
+
+    public boolean setHaveCompleteFile(boolean bool) {
+        this.haveCompleteFile = bool;
+        return haveCompleteFile;
+    }
+
+    public char[] changeBit(int i, char c) {
+        this.bitfield[i] = c;
+        return bitfield;
+    }
+}
+class RunServer extends Thread {
+    public void run() {
+        try {
+            ServerSocket listener = new ServerSocket(3636);
+            int clientNum = 1;
+            System.out.println("The server is running.");
+            try {
+                while (true) {
+                    new Server.Handler(listener.accept(), clientNum).start();
+                    System.out.println("Client " + clientNum + " is connected!");
+                    clientNum++;
+                }
+            } finally {
+                listener.close();
+            }
+        } catch (Exception e) {
+            System.out.println("Server error");
+        }
     }
 }

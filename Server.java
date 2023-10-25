@@ -30,7 +30,7 @@ private static final int sPort = 3636;   //The server will be listening on this 
     * A handler thread class.  Handlers are spawned from the listening
     * loop and are responsible for dealing with a single client's requests.
     */
-    private static class Handler extends Thread {
+    public static class Handler extends Thread {
 		private String message;    //message received from the client
 		private String MESSAGE;    //uppercase message send to the client
 		private Socket connection;

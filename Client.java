@@ -11,7 +11,8 @@ public class Client {
 	ObjectOutputStream out;         //stream write to the socket
  	ObjectInputStream in;          //stream read from the socket
 	String message;                //message send to the server
-	String MESSAGE;                //capitalized message read from the server
+	String MESSAGE;
+	int port = 3636;//capitalized message read from the server
 
 	public void Client() {}
 
@@ -19,8 +20,8 @@ public class Client {
 	{
 		try{
 			//create a socket to connect to the server
-			requestSocket = new Socket("localhost", 3636);
-			System.out.println("Connected to localhost in port 8000");
+			requestSocket = new Socket("localhost", port);
+			System.out.println("Connected to localhost in port " + port);
 			//initialize inputStream and outputStream
 			out = new ObjectOutputStream(requestSocket.getOutputStream());
 			out.flush();
