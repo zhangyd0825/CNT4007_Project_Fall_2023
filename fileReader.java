@@ -69,6 +69,18 @@ class fileReader
             fins.read(temp, index * pieceSize, pieceSize);
             return temp;
     }
+    public void displayPieces()
+    {
+        for(int i = 0; i < pieceVector.size(); i++)
+        {
+            String temp = "";
+            for(int j = 0; j < pieceVector.get(i).length; j++)
+            {
+                temp += pieceVector.get(i)[j];
+            }
+            System.out.print(temp);
+        }
+    }
     public Vector<byte[]> getPieces()
     {
         return pieceVector;
