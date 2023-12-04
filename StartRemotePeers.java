@@ -1,4 +1,4 @@
-package CNT4007_Project_Fall_2023.StartRemotePeers.StartRemotePeers;/*
+package CNT4007_Project_Fall_2023;/*
  *                     CEN5501C Project2
  * This is the program starting remote processes.
  * This program was only tested on CISE SunOS environment.
@@ -44,7 +44,7 @@ public class StartRemotePeers {
 	}
 
 	/**
-	 * @param args
+	 * //@param args
 	 */
 	public static void main(String[] args) {
 		try {

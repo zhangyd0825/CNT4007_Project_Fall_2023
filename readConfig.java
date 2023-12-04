@@ -1,5 +1,4 @@
 package CNT4007_Project_Fall_2023;
-import CNT4007_Project_Fall_2023.readConfig;
 import java.io.*;
 import java.util.Scanner;
 
@@ -63,7 +62,7 @@ public class readConfig{
     }
 
     public static void main(String[] args){
-        readConfig test = new readConfig("CNT4007_Project_Fall_2023/project_config_file_small/project_config_file_small/Common.cfg");
+        readConfig test = new readConfig("CNT4007_Project_Fall_2023/Common.cfg");
         System.out.println("NumberOfPreferedNeighbors: " + test.getNumberOfPreferredNeighbors());
         System.out.println("UnchokingInterval: " + test.getUnchokingInterval());
         System.out.println("OptimisticUnchokingInterval: " + test.getOptimisticUnchokingInterval());
